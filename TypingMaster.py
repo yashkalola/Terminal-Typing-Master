@@ -40,3 +40,21 @@ class TypingMaster:
 
         end_time = time.time()
         self.calculate_wpm(start_time, end_time, words_to_type, typed_words)
+
+    def calculate_wpm(self, start_time, end_time, words_to_type, typed_words):
+        total_time = end_time - start_time
+        total_words = len(words_to_type.split())  # Counting words in the given string
+        correct_count = sum(1 for tw, ww in zip(typed_words, words_to_type) if tw == ww)
+
+        wpm = (correct_count / 5) / (total_time / 60)  # Adjusted for 5 characters per word
+
+        print("\nTyping test completed!\n")
+        print(f"Your typing speed: {wpm:.2f} WPM")
+        print(f"Total time taken: {total_time:.2f} seconds\n")
+
+        if correct_count == total_words * 5:
+            print("Congratulations! You typed all words correctly.")
+
+        self.results.append({"name": self.current_user, "wpm": wpm, "time": total_time})
+        self.save_results()
+
