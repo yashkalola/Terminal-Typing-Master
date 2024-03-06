@@ -58,3 +58,13 @@ class TypingMaster:
         self.results.append({"name": self.current_user, "wpm": wpm, "time": total_time})
         self.save_results()
 
+    def show_leaderboard(self):
+        print("\nLeaderboard:")
+        if os.path.exists(self.leaderboard_file):
+            with open(self.leaderboard_file, 'r') as file:
+                leaderboard = json.load(file)
+                for entry in leaderboard:
+                    print(f"{entry['name']}: {entry['wpm']} WPM - Time: {entry['time']:.2f} seconds")
+        else:
+            print("Leaderboard is empty.")
+
