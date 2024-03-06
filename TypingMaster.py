@@ -71,3 +71,11 @@ class TypingMaster:
     def save_results(self):
         with open(self.leaderboard_file, 'w') as file:
             json.dump(self.results, file, indent=2)
+    def on_press(self, key):
+        try:
+            if key.char == 'q' and (key.ctrl or key.meta):
+                self.exit_flag = True
+                return False
+        except AttributeError:
+            pass
+
