@@ -79,3 +79,23 @@ class TypingMaster:
         except AttributeError:
             pass
 
+    def run(self):
+        self.get_username()
+
+        while not self.exit_flag:
+            print("\nChoose an option:")
+            print("1. Start typing test")
+            print("2. Show leaderboard")
+            print("3. Exit")
+
+            choice = input("Enter your choice (1/2/3): ")
+
+            if choice == '1':
+                self.start_typing_test()
+            elif choice == '2':
+                self.show_leaderboard()
+            elif choice == '3':
+                self.exit_flag = True
+            else:
+                print("Invalid choice. Please enter 1, 2, or 3.")
+
