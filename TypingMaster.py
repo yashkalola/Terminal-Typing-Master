@@ -68,3 +68,6 @@ class TypingMaster:
         else:
             print("Leaderboard is empty.")
 
+    def save_results(self):
+        with open(self.leaderboard_file, 'w') as file:
+            json.dump(self.results, file, indent=2)
