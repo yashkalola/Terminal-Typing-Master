@@ -99,3 +99,11 @@ class TypingMaster:
             else:
                 print("Invalid choice. Please enter 1, 2, or 3.")
 
+if __name__ == "__main__":
+    typing_master = TypingMaster()
+
+    with keyboard.Listener(on_press=typing_master.on_press) as listener:
+        typing_master.run()
+
+    print("Program ended.")
+
